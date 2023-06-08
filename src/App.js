@@ -38,7 +38,6 @@ import UpdateUser from "./component/Admin/UpdateUser";
 import ProductReviews from "./component/Admin/ProductReviews";
 import NotFound from "./component/layout/Not Found/NotFound";
 
-
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
