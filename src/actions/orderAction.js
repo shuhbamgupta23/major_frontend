@@ -31,8 +31,13 @@ export const createOrder = (order) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     };
-    const { data } = await axios.post("https://majorbackend-production-0037.up.railway.app/order/new", order, config);
+    const { data } = await axios.post(
+      "https://majorbackend-production-0037.up.railway.app/order/new",
+      order,
+      config
+    );
 
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
   } catch (error) {
@@ -48,7 +53,10 @@ export const myOrders = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDERS_REQUEST });
 
-    const { data } = await axios.get("https://majorbackend-production-0037.up.railway.app/orders/me");
+    const { data } = await axios.get(
+      "https://majorbackend-production-0037.up.railway.app/orders/me",
+      { credentials: "include" }
+    );
 
     dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -64,7 +72,10 @@ export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
-    const { data } = await axios.get("https://majorbackend-production-0037.up.railway.app/admin/orders");
+    const { data } = await axios.get(
+      "https://majorbackend-production-0037.up.railway.app/admin/orders",
+      { credentials: "include" }
+    );
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -84,6 +95,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     };
     const { data } = await axios.put(
       `https://majorbackend-production-0037.up.railway.app/admin/order/${id}`,
@@ -105,7 +117,10 @@ export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
-    const { data } = await axios.delete(`https://majorbackend-production-0037.up.railway.app/admin/order/${id}`);
+    const { data } = await axios.delete(
+      `https://majorbackend-production-0037.up.railway.app/admin/order/${id}`,
+      { credentials: "include" }
+    );
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
   } catch (error) {
@@ -121,7 +136,10 @@ export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`https://majorbackend-production-0037.up.railway.app/order/${id}`);
+    const { data } = await axios.get(
+      `https://majorbackend-production-0037.up.railway.app/order/${id}`,
+      { credentials: "include" }
+    );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
   } catch (error) {

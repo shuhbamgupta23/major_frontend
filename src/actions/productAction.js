@@ -44,7 +44,7 @@ export const getProduct =
         link = `https://majorbackend-production-0037.up.railway.app/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
 
-      const { data } = await axios.get(link);
+      const { data } = await axios.get(link, { credentials: "include" });
 
       dispatch({
         type: ALL_PRODUCT_SUCCESS,
@@ -63,7 +63,10 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("https://majorbackend-production-0037.up.railway.app/admin/products");
+    const { data } = await axios.get(
+      "https://majorbackend-production-0037.up.railway.app/admin/products",
+      { credentials: "include" }
+    );
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -84,6 +87,7 @@ export const createProduct = (productData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     };
 
     const { data } = await axios.post(
@@ -111,6 +115,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     };
 
     const { data } = await axios.put(
@@ -133,11 +138,13 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 
 // Delete Product
 export const deleteProduct = (id) => async (dispatch) => {
-
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`https://majorbackend-production-0037.up.railway.app/admin/product/${id}`);
+    const { data } = await axios.delete(
+      `https://majorbackend-production-0037.up.railway.app/admin/product/${id}`,
+      { credentials: "include" }
+    );
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -156,7 +163,10 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`https://majorbackend-production-0037.up.railway.app/product/${id}`);
+    const { data } = await axios.get(
+      `https://majorbackend-production-0037.up.railway.app/product/${id}`,
+      { credentials: "include" }
+    );
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -177,9 +187,14 @@ export const newReview = (reviewData) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     };
 
-    const { data } = await axios.put(`https://majorbackend-production-0037.up.railway.app/review`, reviewData, config);
+    const { data } = await axios.put(
+      `https://majorbackend-production-0037.up.railway.app/review`,
+      reviewData,
+      config
+    );
 
     dispatch({
       type: NEW_REVIEW_SUCCESS,
@@ -198,7 +213,10 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`https://majorbackend-production-0037.up.railway.app/reviews?id=${id}`);
+    const { data } = await axios.get(
+      `https://majorbackend-production-0037.up.railway.app/reviews?id=${id}`,
+      { credentials: "include" }
+    );
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -218,7 +236,8 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(
-      `https://majorbackend-production-0037.up.railway.app/reviews?id=${reviewId}&productId=${productId}`
+      `https://majorbackend-production-0037.up.railway.app/reviews?id=${reviewId}&productId=${productId}`,
+      { credentials: "include" }
     );
 
     dispatch({
