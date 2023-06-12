@@ -44,7 +44,10 @@ export const getProduct =
         link = `https://majorbackend-production-0037.up.railway.app/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
       }
 
-      const { data } = await axios.get(link, { credentials: "include" });
+      const { data } = await axios.get(link, {
+        credentials: "include",
+        withCredentials: true,
+      });
 
       dispatch({
         type: ALL_PRODUCT_SUCCESS,
@@ -65,7 +68,7 @@ export const getAdminProduct = () => async (dispatch) => {
 
     const { data } = await axios.get(
       "https://majorbackend-production-0037.up.railway.app/admin/products",
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({
@@ -88,6 +91,7 @@ export const createProduct = (productData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -116,6 +120,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -143,7 +148,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 
     const { data } = await axios.delete(
       `https://majorbackend-production-0037.up.railway.app/admin/product/${id}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({
@@ -165,7 +170,7 @@ export const getProductDetails = (id) => async (dispatch) => {
 
     const { data } = await axios.get(
       `https://majorbackend-production-0037.up.railway.app/product/${id}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({
@@ -188,6 +193,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -215,7 +221,7 @@ export const getAllReviews = (id) => async (dispatch) => {
 
     const { data } = await axios.get(
       `https://majorbackend-production-0037.up.railway.app/reviews?id=${id}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({
@@ -237,7 +243,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
 
     const { data } = await axios.delete(
       `https://majorbackend-production-0037.up.railway.app/reviews?id=${reviewId}&productId=${productId}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({

@@ -69,6 +69,7 @@ export const register = (userData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -93,7 +94,7 @@ export const loadUser = () => async (dispatch) => {
 
     const { data } = await axios.get(
       `https://majorbackend-production-0037.up.railway.app/me`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
@@ -109,6 +110,7 @@ export const logout = () => async (dispatch) => {
       `https://majorbackend-production-0037.up.railway.app/logout`,
       {
         credentials: "include",
+        withCredentials: true,
       }
     );
 
@@ -126,6 +128,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -151,6 +154,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -176,6 +180,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -201,6 +206,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -224,7 +230,7 @@ export const getAllUsers = () => async (dispatch) => {
     dispatch({ type: ALL_USERS_REQUEST });
     const { data } = await axios.get(
       `https://majorbackend-production-0037.up.railway.app/admin/users`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
@@ -239,7 +245,7 @@ export const getUserDetails = (id) => async (dispatch) => {
     dispatch({ type: USER_DETAILS_REQUEST });
     const { data } = await axios.get(
       `https://majorbackend-production-0037.up.railway.app/admin/user/${id}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data.user });
@@ -256,6 +262,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -280,7 +287,7 @@ export const deleteUser = (id) => async (dispatch) => {
 
     const { data } = await axios.delete(
       `https://majorbackend-production-0037.up.railway.app/admin/user/${id}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({ type: DELETE_USER_SUCCESS, payload: data });

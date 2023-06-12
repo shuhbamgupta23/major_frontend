@@ -96,6 +96,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
         "Content-Type": "application/json",
       },
       credentials: "include",
+      withCredentials: true,
     };
     const { data } = await axios.put(
       `https://majorbackend-production-0037.up.railway.app/admin/order/${id}`,
@@ -119,7 +120,7 @@ export const deleteOrder = (id) => async (dispatch) => {
 
     const { data } = await axios.delete(
       `https://majorbackend-production-0037.up.railway.app/admin/order/${id}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
@@ -138,7 +139,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
 
     const { data } = await axios.get(
       `https://majorbackend-production-0037.up.railway.app/order/${id}`,
-      { credentials: "include" }
+      { credentials: "include", withCredentials: true }
     );
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
