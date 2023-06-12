@@ -96,7 +96,6 @@ export const updateOrder = (id, order) => async (dispatch) => {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      withCredentials: true,
     };
     const { data } = await axios.put(
       `https://majorbackend-production-0037.up.railway.app/admin/order/${id}`,

@@ -46,7 +46,6 @@ export const getProduct =
 
       const { data } = await axios.get(link, {
         credentials: "include",
-        withCredentials: true,
       });
 
       dispatch({
@@ -91,7 +90,6 @@ export const createProduct = (productData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -120,7 +118,6 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -193,7 +190,6 @@ export const newReview = (reviewData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.put(

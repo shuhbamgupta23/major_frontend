@@ -69,7 +69,6 @@ export const register = (userData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -110,7 +109,6 @@ export const logout = () => async (dispatch) => {
       `https://majorbackend-production-0037.up.railway.app/logout`,
       {
         credentials: "include",
-        withCredentials: true,
       }
     );
 
@@ -128,7 +126,6 @@ export const updateProfile = (userData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -154,7 +151,6 @@ export const updatePassword = (passwords) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -180,7 +176,6 @@ export const forgotPassword = (email) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -206,7 +201,6 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.put(
@@ -262,7 +256,6 @@ export const updateUser = (id, userData) => async (dispatch) => {
     const config = {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      withCredentials: true,
     };
 
     const { data } = await axios.put(
