@@ -49,7 +49,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://majorbackend-production-0037.up.railway.app/login`,
+      `https://back-end-76tc.onrender.com/login`,
       { email, password },
       config,
       { withCredentials: true }
@@ -72,7 +72,7 @@ export const register = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://majorbackend-production-0037.up.railway.app/register`,
+      `https://back-end-76tc.onrender.com/register`,
       userData,
       config
     );
@@ -91,10 +91,10 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(
-      `https://majorbackend-production-0037.up.railway.app/me`,
-      { credentials: "include", withCredentials: true }
-    );
+    const { data } = await axios.get(`https://back-end-76tc.onrender.com/me`, {
+      credentials: "include",
+      withCredentials: true,
+    });
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -105,12 +105,9 @@ export const loadUser = () => async (dispatch) => {
 // Logout User
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(
-      `https://majorbackend-production-0037.up.railway.app/logout`,
-      {
-        credentials: "include",
-      }
-    );
+    await axios.get(`https://back-end-76tc.onrender.com/logout`, {
+      credentials: "include",
+    });
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -129,7 +126,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://majorbackend-production-0037.up.railway.app/me/update`,
+      `https://back-end-76tc.onrender.com/me/update`,
       userData,
       config
     );
@@ -154,7 +151,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://majorbackend-production-0037.up.railway.app/password/update`,
+      `https://back-end-76tc.onrender.com/password/update`,
       passwords,
       config
     );
@@ -179,7 +176,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://majorbackend-production-0037.up.railway.app/password/forgot`,
+      `https://back-end-76tc.onrender.com/password/forgot`,
       email,
       config
     );
@@ -204,7 +201,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://majorbackend-production-0037.up.railway.app/password/reset/${token}`,
+      `https://back-end-76tc.onrender.com/password/reset/${token}`,
       passwords,
       config
     );
@@ -223,7 +220,7 @@ export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
     const { data } = await axios.get(
-      `https://majorbackend-production-0037.up.railway.app/admin/users`,
+      `https://back-end-76tc.onrender.com/admin/users`,
       { credentials: "include", withCredentials: true }
     );
 
@@ -238,7 +235,7 @@ export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
     const { data } = await axios.get(
-      `https://majorbackend-production-0037.up.railway.app/admin/user/${id}`,
+      `https://back-end-76tc.onrender.com/admin/user/${id}`,
       { credentials: "include", withCredentials: true }
     );
 
@@ -259,7 +256,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://majorbackend-production-0037.up.railway.app/admin/user/${id}`,
+      `https://back-end-76tc.onrender.com/admin/user/${id}`,
       userData,
       config
     );
@@ -279,7 +276,7 @@ export const deleteUser = (id) => async (dispatch) => {
     dispatch({ type: DELETE_USER_REQUEST });
 
     const { data } = await axios.delete(
-      `https://majorbackend-production-0037.up.railway.app/admin/user/${id}`,
+      `https://back-end-76tc.onrender.com/admin/user/${id}`,
       { credentials: "include", withCredentials: true }
     );
 
