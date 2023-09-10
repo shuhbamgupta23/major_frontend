@@ -8,7 +8,7 @@ import axios from "axios";
 // Add to Cart
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `https://back-end-76tc.onrender.com/product/${id}`,
+    `https://backendmajor.onrender.com/product/${id}`,
     { credentials: "include" }
   );
 

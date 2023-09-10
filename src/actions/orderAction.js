@@ -34,7 +34,7 @@ export const createOrder = (order) => async (dispatch) => {
       credentials: "include",
     };
     const { data } = await axios.post(
-      "https://back-end-76tc.onrender.com/order/new",
+      "https://backendmajor.onrender.com/order/new",
       order,
       config
     );
@@ -54,7 +54,7 @@ export const myOrders = () => async (dispatch) => {
     dispatch({ type: MY_ORDERS_REQUEST });
 
     const { data } = await axios.get(
-      "https://back-end-76tc.onrender.com/orders/me",
+      "https://backendmajor.onrender.com/orders/me",
       { credentials: "include" }
     );
 
@@ -73,7 +73,7 @@ export const getAllOrders = () => async (dispatch) => {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
     const { data } = await axios.get(
-      "https://back-end-76tc.onrender.com/admin/orders",
+      "https://backendmajor.onrender.com/admin/orders",
       { credentials: "include" }
     );
 
@@ -98,7 +98,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
       credentials: "include",
     };
     const { data } = await axios.put(
-      `https://back-end-76tc.onrender.com/admin/order/${id}`,
+      `https://backendmajor.onrender.com/admin/order/${id}`,
       order,
       config
     );
@@ -118,7 +118,7 @@ export const deleteOrder = (id) => async (dispatch) => {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
     const { data } = await axios.delete(
-      `https://back-end-76tc.onrender.com/admin/order/${id}`,
+      `https://backendmajor.onrender.com/admin/order/${id}`,
       { credentials: "include", withCredentials: true }
     );
 
@@ -137,7 +137,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
     dispatch({ type: ORDER_DETAILS_REQUEST });
 
     const { data } = await axios.get(
-      `https://back-end-76tc.onrender.com/order/${id}`,
+      `https://backendmajor.onrender.com/order/${id}`,
       { credentials: "include", withCredentials: true }
     );
 

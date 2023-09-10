@@ -49,7 +49,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://back-end-76tc.onrender.com/login`,
+      `https://backendmajor.onrender.com/login`,
       { email, password },
       config,
       { withCredentials: true }
@@ -72,7 +72,7 @@ export const register = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://back-end-76tc.onrender.com/register`,
+      `https://backendmajor.onrender.com/register`,
       userData,
       config
     );
@@ -91,7 +91,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`https://back-end-76tc.onrender.com/me`, {
+    const { data } = await axios.get(`https://backendmajor.onrender.com/me`, {
       credentials: "include",
       withCredentials: true,
     });
@@ -105,7 +105,7 @@ export const loadUser = () => async (dispatch) => {
 // Logout User
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`https://back-end-76tc.onrender.com/logout`, {
+    await axios.get(`https://backendmajor.onrender.com/logout`, {
       credentials: "include",
     });
 
@@ -126,7 +126,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://back-end-76tc.onrender.com/me/update`,
+      `https://backendmajor.onrender.com/me/update`,
       userData,
       config
     );
@@ -151,7 +151,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://back-end-76tc.onrender.com/password/update`,
+      `https://backendmajor.onrender.com/password/update`,
       passwords,
       config
     );
@@ -176,7 +176,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://back-end-76tc.onrender.com/password/forgot`,
+      `https://backendmajor.onrender.com/password/forgot`,
       email,
       config
     );
@@ -201,7 +201,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://back-end-76tc.onrender.com/password/reset/${token}`,
+      `https://backendmajor.onrender.com/password/reset/${token}`,
       passwords,
       config
     );
@@ -220,7 +220,7 @@ export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
     const { data } = await axios.get(
-      `https://back-end-76tc.onrender.com/admin/users`,
+      `https://backendmajor.onrender.com/admin/users`,
       { credentials: "include", withCredentials: true }
     );
 
@@ -235,7 +235,7 @@ export const getUserDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
     const { data } = await axios.get(
-      `https://back-end-76tc.onrender.com/admin/user/${id}`,
+      `https://backendmajor.onrender.com/admin/user/${id}`,
       { credentials: "include", withCredentials: true }
     );
 
@@ -256,7 +256,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://back-end-76tc.onrender.com/admin/user/${id}`,
+      `https://backendmajor.onrender.com/admin/user/${id}`,
       userData,
       config
     );
@@ -276,7 +276,7 @@ export const deleteUser = (id) => async (dispatch) => {
     dispatch({ type: DELETE_USER_REQUEST });
 
     const { data } = await axios.delete(
-      `https://back-end-76tc.onrender.com/admin/user/${id}`,
+      `https://backendmajor.onrender.com/admin/user/${id}`,
       { credentials: "include", withCredentials: true }
     );
 
