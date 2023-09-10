@@ -164,7 +164,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-
+    console.log("Working");
     const { data } = await axios.get(
       `https://backendmajor.onrender.com/product/${id}`,
       { credentials: "include", withCredentials: true }
