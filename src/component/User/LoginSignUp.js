@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import axios from "axios";
-import User from "./user.png";
+
 const LoginSignUp = ({ history, location }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -32,8 +32,6 @@ const LoginSignUp = ({ history, location }) => {
 
   const { name, email, password } = user;
   const [image, setImage] = useState("");
-  const [avatar, setAvatar] = useState("/Profile.png");
-  const [avatarPreview, setAvatarPreview] = useState(`${User}`);
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -169,7 +167,6 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
 
                 <div id="registerImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
                   <input
                     type="file"
                     name="avatar"
