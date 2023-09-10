@@ -7,7 +7,8 @@ import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-
+import axios from "axios";
+import User from "./user.png";
 const LoginSignUp = ({ history, location }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -30,42 +31,33 @@ const LoginSignUp = ({ history, location }) => {
   });
 
   const { name, email, password } = user;
-
+  const [image, setImage] = useState("");
   const [avatar, setAvatar] = useState("/Profile.png");
-  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
-  console.log(avatar)
+  const [avatarPreview, setAvatarPreview] = useState(`${User}`);
+
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
   };
 
-  const registerSubmit = (e) => {
+  const registerSubmit = async (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "shubhamupload");
+    data.append("cloud_name", "dqdetczii");
 
-    myForm.set("name", name);
-    myForm.set("email", email);
-    myForm.set("password", password);
-    myForm.set("avatar", avatar);
-    dispatch(register(myForm));
+    const imageUrl = await axios.post(
+      "https://api.cloudinary.com/v1_1/dqdetczii/image/upload",
+      data
+    );
+    const newForm = { ...user, avatar: imageUrl.data.url };
+    dispatch(register(newForm));
   };
 
   const registerDataChange = (e) => {
-    if (e.target.name === "avatar") {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result);
-        }
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
-    } else {
-      setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const redirect = location.search ? location.search.split("=")[1] : "/account";
@@ -182,7 +174,7 @@ const LoginSignUp = ({ history, location }) => {
                     type="file"
                     name="avatar"
                     accept="image/*"
-                    onChange={registerDataChange}
+                    onChange={(e) => setImage(e.target.files[0])}
                   />
                 </div>
                 <input type="submit" value="Register" className="signUpBtn" />
